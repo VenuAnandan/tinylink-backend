@@ -251,7 +251,7 @@ app.get("/remove_url/:code",async(req,res)=>{
 
 
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
+const PORT = process.env.PORT || 4324;
+app.listen(PORT, "0.0.0.0", () => {
     console.log(`TinyLink Backend is working on port - ${PORT}`)
 });
