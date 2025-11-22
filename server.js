@@ -252,6 +252,26 @@ app.get("/remove_url/:code",async(req,res)=>{
 });
 
 
+// Api for health Check
+app.get("/healthz", async (req, res) => {
+    try {
+        const dbCheck = await pool.query("SELECT NOW()");
+
+        res.status(200).json({
+            status: "ok",
+            version : "1.0",
+            database: "connected",
+            server_time: new Date().toISOString(),
+            uptime: process.uptime()
+        });
+    } catch (error) {
+        res.status(500).json({
+            status: "error",
+            database: "disconnected",
+            message: error.message
+        });
+    }
+});
 
 
 const PORT = process.env.PORT || 4324;
