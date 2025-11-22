@@ -9,7 +9,10 @@ const { Pool } = pkg;
 
 const app = express();
 app.use(cors({
-    origin: "http://localhost:3000",
+    origin: [
+        "http://localhost:3000",
+        "https://tinylink-frontend-lhws.onrender.com"
+    ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
 }));
